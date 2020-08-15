@@ -7,6 +7,7 @@ const AWS = require('aws-sdk')
 const dynamodb = new AWS.DynamoDB.DocumentClient({
   region: 'ap-northeast-1'
 })
+const KuromojiWrapper = require('./KuromojiWrapper')
 
 exports.handler = async (event) => {
   return new Promise(async (resolve, reject) => {
@@ -21,10 +22,15 @@ exports.handler = async (event) => {
     const message = events.message.text
     console.log(message)
 
+    const analysis = new KuromojiWrapper()
+    await analysis.init()
+    const key = analysis.get(message)
+    console.log(key)
+
     const param = {
       TableName: 'ReplyMapping',
       Key: {
-        type: message
+        type: key
       }
     }
     const result = await dynamodb.get(param).promise()
