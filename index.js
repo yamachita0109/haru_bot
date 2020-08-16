@@ -20,12 +20,12 @@ exports.handler = async (event) => {
     }
     const events = body.events[0]
     const message = events.message.text
-    console.log(message)
+    console.log(`message: ${message}`)
 
     const analysis = new KuromojiWrapper()
     await analysis.init()
     const key = analysis.get(message)
-    console.log(key)
+    console.log(`key: ${key}`)
 
     const param = {
       TableName: 'ReplyMapping',
@@ -35,8 +35,8 @@ exports.handler = async (event) => {
     }
     const result = await dynamodb.get(param).promise()
     let msg, img
-    console.log(result.Item)
     if (result.Item) {
+      const getRandomList = (list) => list[Math.floor(Math.random() * list.length)]
       msg = getRandomList(result.Item.msg)
       img = getRandomList(result.Item.img)
     } else {
@@ -67,5 +67,3 @@ exports.handler = async (event) => {
       }).catch(reject)
   })
 }
-
-const getRandomList = (list) => list[Math.floor(Math.random() * list.length)]

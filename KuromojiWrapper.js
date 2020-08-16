@@ -1,6 +1,6 @@
 'use strict'
 const path = require('path')
-const DIR = path.resolve(__dirname, './node_modules/kuromoji/dict')
+const DIR = './node_modules/kuromoji/dict'
 const kuromoji = require('kuromoji')
 
 module.exports = class KuromojiWrapper {

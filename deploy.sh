@@ -1,6 +1,6 @@
 #!/bin/sh
 rm -fr release && mkdir release
-zip -r app.zip index.js node_modules > /dev/null 2>&1
+zip -r app.zip index.js KuromojiWrapper.js node_modules > /dev/null 2>&1
 mv app.zip release/
 
 aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID --profile $AWS_IAM_USER_NAME
