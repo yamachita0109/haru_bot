@@ -11,7 +11,7 @@ Resources:
         Fn::GetAtt:
           - "HaruBotRole"
           - "Arn"
-      MemorySize: 512
+      MemorySize: 1024
       Timeout: 10
       Environment:
         Variables:
