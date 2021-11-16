@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@line/bot-sdk": "^7.0.0",
-    "aws-sdk": "^2.725.0",
+    "aws-sdk": "^2.814.0",
     "crypto": "^1.0.1",
     "kuromoji": "^0.1.2"
   }
